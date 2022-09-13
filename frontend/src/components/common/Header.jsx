@@ -29,8 +29,7 @@ const Header = () => {
         <nav>
           <div class="logo">
             <Link to="/">
-              <img src={logo} alt="logo" style="
-    width: 90%;"/>
+              <img src={logo} alt="logo" />
             </Link>
           </div>
 
