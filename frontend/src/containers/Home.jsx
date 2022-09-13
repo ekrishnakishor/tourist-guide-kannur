@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import MainImg from "../assets/img/main-banner.png";
+import MainImg from "../assets/img/Sree-Parassinikadavu-Muthappan-Temple-kb6592.webp";
 import MapsImg from "../assets/img/map.png";
 import SubsBackground from "../assets/img/subscription-background.png";
 import WaveIcon from "../assets/img/wave-icon.svg";
