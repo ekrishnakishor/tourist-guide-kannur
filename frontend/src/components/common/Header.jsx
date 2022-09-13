@@ -1,26 +1,78 @@
-import React from "react";
-import { push } from "connected-react-router";
-import { useDispatch } from "react-redux";
+import { useState } from "react";
+import { Link } from "react-router-dom";
 import logo from "../../assets/img/logo-kannur.webp";
-import Dropdown from '../../assets/img/dropdown.svg';
-import Search from "../common/Search";
+import MenuIcon from "../../assets/img/menu-icon.svg";
+
+import { useEffect } from "react";
 
 const Header = () => {
-  const dispatch = useDispatch();
+  const [isActive, setIsActive] = useState(false);
+  const [temp, setTemp] = useState();
+
+  const handleClick = (e) => {
+    e.stopPropagation();
+
+    setIsActive(!isActive);
+  };
+
+  useEffect(() => {
+    window.onresize = function (e) {
+      setTemp(window.innerWidth);
+    };
+  }, []);
+
+  useEffect(() => {}, []);
+
   return (
     <>
       <header>
         <nav>
           <div class="logo">
-            <img src={logo} alt="logo" onClick={() => dispatch(push('/'))} />
+            <Link to="/">
+              <img src={logo} alt="logo" />
+            </Link>
           </div>
-          <div class="right-nav">
-            <img src={Dropdown} alt="dropdown" onClick={() => dispatch(push('/favourites'))} />
+
+          {temp < 540 ? (
+            <div
+              className="right-nav"
+              onClick={(e) => {
+                e.stopPropagation();
+                setIsActive(false);
+              }}
+              style={{ display: "flex" }}
+            >
+              {isActive && (
+                <>
+                  <Link to="/">HOME</Link>
+                  <a href="#wonders">WONDERS IN KANNUR</a>
+                  <a href="#attractions">TOURIST ATTRACTION</a>
+                  <Link to="/favourites">FAVOURITES</Link>
+                </>
+              )}
+            </div>
+          ) : (
+            <div className="right-nav" style={{}}>
+              <Link to="/">HOME</Link>
+              <a href="#wonders">WONDERS IN KANNUR</a>
+              <a href="#attractions">TOURIST ATTRACTION</a>
+              <Link to="/favourites">FAVOURITES</Link>
+            </div>
+          )}
+          <div className="mb-menu">
+            {isActive ? (
+              <div
+                onClick={() => setIsActive(false)}
+                style={{ cursor: "pointer" }}
+              >
+                X
+              </div>
+            ) : (
+              <img src={MenuIcon} alt="menu" onClick={(e) => handleClick(e)} />
+            )}
+            <ul></ul>
           </div>
         </nav>
-        <div class="search">
-          <Search />
-        </div>
       </header>
     </>
   );

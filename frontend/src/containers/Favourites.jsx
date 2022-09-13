@@ -1,14 +1,8 @@
-import React from "react";
-import FavCard from "../components/common/FavCard";
-import Footer from "../components/common/Footer";
-import Header from "../components/common/Header";
-import Search from "../components/common/Search";
-import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
-import { getFavourites } from "../reducks/favourites/selectors";
 import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import FavCard from "../components/common/FavCard";
 import { fetchFromLocalStorage } from "../reducks/favourites/operations";
-import PlacesHeader from "../components/common/PlacesHeader";
+import { getFavourites } from "../reducks/favourites/selectors";
 
 const Favourites = () => {
   const dispatch = useDispatch();
@@ -21,7 +15,6 @@ const Favourites = () => {
 
   return (
     <>
-      <PlacesHeader />
       <section class="section2">
         <div class="heading-favorite">Favourite Places</div>
         <div class="grid">
@@ -30,7 +23,6 @@ const Favourites = () => {
           ))}
         </div>
       </section>
-      <Footer />
     </>
   );
 };

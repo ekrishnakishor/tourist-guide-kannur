@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import Imgsearch from "../../assets/img/search.svg";
-import { useDispatch } from "react-redux";
 import { push } from "connected-react-router";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import Imgsearch from "../../assets/img/search.svg";
 
 const Search = () => {
   const dispatch = useDispatch();
@@ -16,28 +16,30 @@ const Search = () => {
   };
 
   return (
-    <>
-      <form onSubmit={submitAction}>
-        <input
-          className="search-bar"
-          name="search"
-          type="inputbox"
-          onChange={inputSearch}
-          placeholder="Search for best places to Visit in Kannur"
-        />
-      </form>
-      <a onclick={() => console.log("test")}>
-        <img
-          className="search-icon"
-          onclick={() => {
-            alert("test");
-          }}
-          src={Imgsearch}
-          alt=""
-          onClick={submitAction}
-        />
-      </a>
-    </>
+    <section className="search">
+      <div className="search-container">
+        <h1>The United place on Earth</h1>
+        <form onSubmit={submitAction} className="form">
+          <input
+            className="search-bar"
+            name="search"
+            type="inputbox"
+            onChange={inputSearch}
+            placeholder="Search your destination"
+          />
+          <a href="null">
+            <img
+              className="search-icon"
+              onClick={() => {
+                alert("test");
+              }}
+              src={Imgsearch}
+              alt=""
+            />
+          </a>
+        </form>
+      </div>
+    </section>
   );
 };
 

@@ -1,13 +1,12 @@
-import Footer from "../components/common/Footer";
-import PlacesHeader from "../components/common/PlacesHeader";
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import queryString from "query-string";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import MapsImg from "../assets/img/map.png";
 import Card from "../components/common/Card";
+import { getCategories } from "../reducks/categories/selectors";
+import { fetchFromLocalStorage } from "../reducks/favourites/operations";
 import { fetchPlaces } from "../reducks/places/operations";
 import { getPlaces } from "../reducks/places/selectors";
-import { fetchFromLocalStorage } from "../reducks/favourites/operations";
-import { getCategories } from "../reducks/categories/selectors";
 
 const Places = () => {
   const parsed = queryString.parse(window.location.search);
@@ -35,16 +34,16 @@ const Places = () => {
   }, [search, category]);
   return (
     <>
-      <PlacesHeader />
       <section class="places-container">
-        <h2 className="place-heading">Places To Visit</h2>
         <div class="places-items">
           {places.map((place) => (
             <Card key={place.id} place={place} />
           ))}
         </div>
       </section>
-      <Footer />
+      <section className="maps">
+        <img src={MapsImg} alt="" />
+      </section>
     </>
   );
 };

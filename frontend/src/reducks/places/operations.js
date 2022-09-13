@@ -11,7 +11,7 @@ export const fetchPlaces = (search, category) => {
         dispatch(fetchPlacesAction(places));
       })
       .catch((error) => {
-        alert("Failed to connect API: /places/");
+        alert("Failed to connect API: Places not  found");
       });
   };
 };
