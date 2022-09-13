@@ -29,7 +29,8 @@ const Header = () => {
         <nav>
           <div class="logo">
             <Link to="/">
-              <img src={logo} alt="logo" />
+              <img src={logo} alt="logo" style="
+    width: 90%;"/>
             </Link>
           </div>
 
@@ -45,8 +46,6 @@ const Header = () => {
               {isActive && (
                 <>
                   <Link to="/">HOME</Link>
-                  <a href="#wonders">WONDERS IN KANNUR</a>
-                  <a href="#attractions">TOURIST ATTRACTION</a>
                   <Link to="/favourites">FAVOURITES</Link>
                 </>
               )}
@@ -54,8 +53,6 @@ const Header = () => {
           ) : (
             <div className="right-nav" style={{}}>
               <Link to="/">HOME</Link>
-              <a href="#wonders">WONDERS IN KANNUR</a>
-              <a href="#attractions">TOURIST ATTRACTION</a>
               <Link to="/favourites">FAVOURITES</Link>
             </div>
           )}
